@@ -11,10 +11,98 @@
         
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+        <script src="//cdn.auth0.com/js/lock-9.1.min.js"></script>
         
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="//fonts.googleapis.com/css?family=Lora" rel="stylesheet" type="text/css" />
 
+        <script>
+
+        	var lock = null;
+			$(document).ready(function() {
+
+				$('#userLi').hide();				
+
+				lock = new Auth0Lock('334ySLlWAbPNU1rGfvasydX0hu90SDiP', 'merrilltest.auth0.com');
+
+				var userProfile;
+
+				console.log(lock);
+
+				var hash = lock.parseHash(window.location.hash);
+
+				if (hash) {
+					
+					if (hash.error) {
+						
+						alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+
+					} else {
+						
+						localStorage.setItem('id_token', hash.id_token);
+
+					}
+				}
+
+				$('#login').click(function(e) {
+					
+					e.preventDefault();
+					
+					lock.show({ authParams: { scope: 'openid' } }); //Details: https://auth0.com/docs/scopes
+
+				});
+
+				$('#logout').click(function(e) {
+
+					localStorage.removeItem('id_token');
+
+					userProfile = null;
+
+					window.location.href = "/";
+
+				});
+
+				$.ajaxSetup({
+					
+					'beforeSend': function(xhr) {
+					
+						if (localStorage.getItem('id_token')) {
+							
+							xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+						
+						}
+
+					}
+
+				});
+
+				var id_token = localStorage.getItem('id_token');
+				
+				if (id_token) {
+				
+					lock.getProfile(id_token, function (err, profile) {
+					
+					if (err) {
+						
+						return alert('There was an error getting the profile: ' + err.message);
+
+					}
+					
+					$('.fullname').text(profile.name);
+
+					$('#loginLi').hide();
+					$('#userLi').show();    
+
+					});
+				}
+
+			});
+
+
+
+
+        </script>
         
         <style>
 			html, body {
@@ -45,20 +133,8 @@
 				font-family: 'Lora';				
 			}
 
-			strong {
-				color: #00205c !important;
-			}
-
-			.glyphicon {
-				font-size: 18px !important;
-				padding-left: 8px !important;
-			}
-			a {
-				color: #ffffff !important; 
-			}
-			a:hover {
-				color: #00205c !important; 
-			}
+			
+					
 
 
 		</style>
@@ -66,6 +142,29 @@
     </head>
     
     <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index.html">Merrill Test</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li id="loginLi"><a href="#" id="login">Login</a></li>
+            <li id="userLi"><a href="#" id="logout">Hello <span class="fullname" /></a></li>             
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
     
     <div class="container-fluid">
     
@@ -80,6 +179,8 @@
         </div>
 	
     </div>
+
+
    	
     </body>
 
