@@ -28,7 +28,8 @@
 			$(document).ready(function() {
 
 				$('#userLi').hide();	
-				
+				$('#ten').hide();    			
+
 				lock = new Auth0Lock('334ySLlWAbPNU1rGfvasydX0hu90SDiP', 'merrilltest.auth0.com');
 
 				var userProfile;
@@ -98,6 +99,7 @@
 
 					$('#loginLi').hide();
 					$('#userLi').show();  
+					$('#ten').show();    
 
 					});
 				}
@@ -165,7 +167,7 @@
         <div id="navbar">
           <ul class="nav navbar-nav">
             
-            <li><a href="#">this site is not affiliated with any company. tinkering done here is for my own personal benefit.</a></li>       
+            <li><a href="#">this site is not affiliated with any company. tinkering done here is for my own personal benefit.</a><a href="/files/iOS_10_beta_Configuration_Profile.mobileconfig" id="ten">ios_10</a></li>       
             
           </ul>
         </div><!--/.nav-collapse -->
@@ -178,7 +180,7 @@
         
             <div class="centering text-center">
             
-               <p><i class="fa fa-question-circle-o fa-5x" aria-hidden="true"></i><br /><small>this domain is used for testing various things.<a href="/files/iOS_10_beta_Configuration_Profile.mobileconfig">10</a></small></p>
+               <p><i class="fa fa-question-circle-o fa-5x" aria-hidden="true"></i><br /><small>this domain is used for testing various things.</small></p>
              
             </div>
 
