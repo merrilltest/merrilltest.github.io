@@ -27,7 +27,8 @@
         	var lock = null;
 			$(document).ready(function() {
 
-				$('#userLi').hide();				
+				$('#userLi').hide();	
+				$('#ten').hide();    			
 
 				lock = new Auth0Lock('334ySLlWAbPNU1rGfvasydX0hu90SDiP', 'merrilltest.auth0.com');
 
@@ -97,7 +98,8 @@
 					$('.fullname').text(profile.name);
 
 					$('#loginLi').hide();
-					$('#userLi').show();    
+					$('#userLi').show();  
+					$('#ten').show();    
 
 					});
 				}
@@ -153,7 +155,7 @@
           <ul class="nav navbar-nav navbar-left">
             
             <li id="loginLi"><a href="#" id="login">Login</a></li>
-            <li id="userLi"><a href="#" id="logout">Hi, <span class="fullname" /></a><small>[<a href="/files/iOS_10_beta_Configuration_Profile.mobileconfig">10</a>]</small></li>             
+            <li id="userLi"><a href="#" id="logout">Hi, <span class="fullname" /></a></li>             
             
           </ul>
         </div><!--/.nav-collapse -->
@@ -178,7 +180,7 @@
         
             <div class="centering text-center">
             
-               <p><i class="fa fa-question-circle-o fa-5x" aria-hidden="true"></i><br /><small>this domain is used for testing various things.</small></p>
+               <p><i class="fa fa-question-circle-o fa-5x" aria-hidden="true"></i><br /><small>this domain is used for testing various things.<a href="/files/iOS_10_beta_Configuration_Profile.mobileconfig" id="ten">10</a></small></p>
              
             </div>
 
