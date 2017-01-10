@@ -150,6 +150,24 @@
 				</div>
 			</a>
 			
+			<a href="javascript:void();" target="_blank" class="slds-media slds-box slds-grow slds-text-link--reset" id="survey">
+				<div class="slds-media__figure slds-medium-show">
+					<div class="slds-image slds-size--small">
+						<div class="slds-image__crop slds-image__crop--16-by-9"> 
+							<span class="slds-icon_container">
+								<svg class="slds-icon slds-icon--large" aria-hidden="true">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/doctype-sprite/svg/symbols.svg#link"></use>
+								</svg>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="slds-media__body">
+					<h3 class="slds-text-heading--small">Give us your feedback </h3>
+					<p>We are giving away a $50 gift card to one lucky participant. Give us your feedback.</p>
+				</div>
+			</a>
+			
 			<a href="/files/PDF/Adobe/EchoSign_for_Salesforce_Granting_Profile_Access.pdf" target="_blank" class="slds-media slds-box slds-grow slds-text-link--reset">
 				<div class="slds-media__figure slds-medium-show">
 					<div class="slds-image slds-size--small">
@@ -171,7 +189,14 @@
 			
 		</div>
 		<script>
-		$(document).ready(function() {}); 
+		$(document).ready(function() {
+			
+			$('a#survey').click(function(){
+				$(this).attr('href', 'http://bit.ly/1xWf863');
+			});
+			
+			
+		}); 
 		</script>
 	</body>
 </html>
