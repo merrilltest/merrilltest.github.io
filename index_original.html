@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+    <head>
+    
+    	<title>M e r r i l l T e s t</title>
+      
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!--
+        <script src="//cdn.auth0.com/js/lock-9.1.min.js"></script>
+-->    
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="//fonts.googleapis.com/css?family=Lora" rel="stylesheet" type="text/css" />
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+        <link rel="icon" href="/images/storm_trooper_16x16.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/images/storm_trooper_16x16.png" type="image/x-icon">
+
+        <script>
+
+        	var lock = null;
+			$(document).ready(function() {
+/*
+				$('#userLi').hide();	
+				$('#ten').hide();    			
+
+				lock = new Auth0Lock('334ySLlWAbPNU1rGfvasydX0hu90SDiP', 'merrilltest.auth0.com');
+
+				var userProfile;
+
+				console.log(lock);
+
+				var hash = lock.parseHash(window.location.hash);
+
+				if (hash) {
+					
+					if (hash.error) {
+						
+						alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+
+					} else {
+						
+						localStorage.setItem('id_token', hash.id_token);
+
+					}
+				}
+
+				$('#login').click(function(e) {
+					
+					e.preventDefault();
+					
+					lock.show({ authParams: { scope: 'openid' } }); //Details: https://auth0.com/docs/scopes
+
+				});
+
+				$('#logout').click(function(e) {
+
+					localStorage.removeItem('id_token');
+
+					userProfile = null;
+
+					window.location.href = "/";
+
+				});
+
+				$.ajaxSetup({
+					
+					'beforeSend': function(xhr) {
+					
+						if (localStorage.getItem('id_token')) {
+							
+							xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+						
+						}
+
+					}
+
+				});
+
+				var id_token = localStorage.getItem('id_token');
+				
+				if (id_token) {
+				
+					lock.getProfile(id_token, function (err, profile) {
+					
+					if (err) {
+						
+						return alert('There was an error getting the profile: ' + err.message);
+
+					}
+
+					$('.fullname').text(profile.nickname);
+
+					$('#loginLi').hide();
+					$('#userLi').show();  
+					$('#ten').show();    
+
+					});
+				}
+*/
+			});
+
+
+
+
+        </script>
+        
+        <style>
+			html, body {
+				height:100%; 
+				margin:0;
+				padding:0;
+			}
+
+			.container-fluid {
+				height:100%;
+				display:table;
+				width: 100%;
+				padding: 0;
+			}
+
+			.row-fluid {
+				height: 100%; 
+				display:table-cell; 
+				vertical-align: middle;
+			}
+
+			.centering {
+				float:none;
+				margin:0 auto;
+			}
+
+			
+
+			
+					
+
+
+		</style>
+    
+    </head>
+    
+    <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+      <div class="container">        
+        <div id="navbar">
+
+        	<a class="navbar-brand" href="/index_original.html"><img src="/images/storm_trooper_16x16.png" alt="home"/></a>
+
+	          <ul class="nav navbar-nav navbar-left">
+<!--	            
+	            <li id="loginLi"><a href="#" id="login">Login</a></li>
+	            <li id="userLi"><a href="#" id="logout">Hi, <span class="fullname" /></a></li>             
+-->	            
+	          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">        
+        <div id="navbar">
+          <ul class="nav navbar-nav">
+            
+            <li><a href="#">this site is not affiliated with any company. tinkering done here is for my own personal benefit.</a></li>       
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <div class="container-fluid">
+    
+        <div class="row-fluid">
+        
+            <div class="centering text-center">
+            
+               <p>
+               		<small><a href="/adobe/">adobe sign documentation for salesforce.com</a></small><br />
+
+               		<i class="fa fa-question-circle-o fa-5x" aria-hidden="true"></i><br /><small>this domain is used for testing various things.
+             
+            </div>
+
+        </div>
+	
+    </div>
+
+
+   	
+    </body>
+
+</html>
+<!-- I got the storm trooper icon online. It came from Ashley Hey @ http://heyashley.com/. I am not sure how to provide proper attribution. This is my attempt at that. -->
