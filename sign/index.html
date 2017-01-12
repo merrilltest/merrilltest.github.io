@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<head>
+		<meta charset="UTF-8">
+		<title>signREST</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<link href="/assets/styles/salesforce-lightning-design-system-vf.css" rel="stylesheet" type="text/css" />
+		<style>
+			
+
+		</style>
+	</head>
+
+	<body>
+	
+		<div class="cc">
+		
+			<a href="#" id="login">login</a>
+			
+			
+			
+		</div>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#login').attr('href', 'https://cmerrill.na1.echosign.com/public/oauth?redirect_uri=' + window.location.href + '&response_type=code&client_id=CBJCHBCAABAAuSjWGIpNs5vEricqIU22UHHWdbGyyy0L&scope=user_read:account+user_write:account+user_login:account+agreement_read:account+agreement_write+account+agreement_send:account+widget_read:account+widget_write:account+library_read:account+library_write:account+workflow_read:account+workflow_write:account');
+			
+			
+			$.urlParam = function(param){return new RegExp('[\?&]'+param+'=([^&#]*)').exec(window.location.href)[1]||0;}
+			
+			console.log('ready');
+			
+			console.log(window.location.href);
+			
+			console.log($.urlParam('foo'));
+			
+			localStorage.removeItem("signUrl");
+			
+			console.log( 'localStorage : ' + localStorage.signUrl );
+			
+			var sUrl;
+	
+    $.ajax({
+		type: "GET",
+		  beforeSend: function(request) {
+			request.setRequestHeader(
+				"Access-Token", "3AAABLblqZhCLOb-sDKa7oxfX-iWtEbbqMb0XTf-f3Z8LelQzGhGDyY1botJ4_fi2yQ8kyjKTyWU9a9NqY8Pyt9eiTT3_y5VT",
+				"agreementId", "3AAABLblqZhAnCobxtJswG9-RJgnpvRUFCn2vSv33avVvJy9bSdC6Jar2rogS_wF5OqjLT42LNOKhDzOd9Q55lmvZrC9svMv1"
+									);
+		  },
+        url: "https://api.na1.echosign.com:443/api/rest/v5/agreements/3AAABLblqZhAnCobxtJswG9-RJgnpvRUFCn2vSv33avVvJy9bSdC6Jar2rogS_wF5OqjLT42LNOKhDzOd9Q55lmvZrC9svMv1/signingUrls"
+    }).done(function(data) {
+		sUrl = data.signingUrlSetInfos[0].signingUrls[0].esignUrl; 
+		console.log(sUrl);
+//		localStorage.setItem("signUrl", data.signingUrlSetInfos[0].signingUrls[0].esignUrl);
+		
+		localStorage.setItem("signUrl", sUrl);
+			
+			console.log( 'localStorage : ' + localStorage.signUrl );
+			
+			localStorage.removeItem("signUrl");
+			
+			console.log( 'localStorage : ' + localStorage.signUrl );
+		
+
+    });
+			
+			
+			
+			console.log('complete');
+			
+			
+			
+			
+		}); 
+		</script>
+	</body>
+</html>
